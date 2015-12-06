@@ -17,13 +17,13 @@ label {
 /* Pour les gestions d'erreur dans le formulaire d'inscription */
 
 .error-message {
-	color: #C92020;
+	color: #8e44ad;
 	font-weight: bold;
 	margin-left: 124px; /* 4px de plus pour l'espace des inline-blocks. Crad. */
 }
 
 .line-form.has-error label, .line-form.has-error label::after {
-	color: #C92020;
+	color: #8e44ad;
 }
 
 .line-form.has-error input {
@@ -47,7 +47,7 @@ label {
 }
 
 .error {
-	color : red;
+	color : #8e44ad;
 }
 
 label, .fake-label {

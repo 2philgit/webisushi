@@ -5,9 +5,22 @@ $error = '';
 // print_r($panierC);  // pour test sur la variable session
 // die();
 
+$tab_error = [];
+
 if ( $_POST ) {
 
 if (empty($_POST['action']['registred'])) { // test en premier si le bouton "inscription" n'a pas été cliqué
+
+	$keys = ['email', 'password'];
+	    foreach ( $keys as $key ) {
+	        if ( empty($_POST['auth'][$key]) || !trim($_POST['auth'][$key]) ) {  // trim() supprime les espaces avt et après ds une chaîne
+	                                                             // ici, gère le fait que l'utilisateur est mis des espaces uniquement
+	            // si le champ est vide, on crée l'index correspondant à
+	            // ce champ dans le tableau $tab_error, de manière à le réutiliser plus bas.
+	            $tab_error[$key] = "le champ $key est manquant !\n";
+	            // print_r($tab_error);
+	        }
+	   } 
 
 	if ( !empty($_POST['action']['connexion']) ) {
 		
@@ -57,15 +70,16 @@ if (empty($_POST['action']['registred'])) { // test en premier si le bouton "ins
 
 			<form id="form-login" action="connexion.php" method="post">
 				
+				<h2>Login client</h2>
+				<P>* : champs obligatoires</P>
+				<br />
+					
 				<?php if ( $error ) { ?>
-				<h2 style="color: red;"><?=$error?></h2>
+				<h3 style="color: #000;"><?=$error?></h3>
 				<?php } ?>
 
-					<h2>Login client</h2>
-					<br />
-					
 					<div class="line-form">
-						<label for="new_client[name]">Votre nom :</label>
+						<label for="auth[email]" class="<?=!empty($tab_error['email']) ? 'error' : '' ?>">Votre email :</label>
 						<input
 							type="text"
 							placeholder="email"
@@ -75,7 +89,7 @@ if (empty($_POST['action']['registred'])) { // test en premier si le bouton "ins
 					</div>
 					
 					<div class="line-form">
-						<label for="new_client[name]">Votre nom :</label>
+						<label for="auth[password]" class="<?=!empty($tab_error['password']) ? 'error' : '' ?>">Votre mot de passe :</label>
 						<input type="password" placeholder="password" name="auth[password]" />
 					</div>
 

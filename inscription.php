@@ -9,13 +9,14 @@ $tab_error = [];
 
 if ( $_POST ) {
 
-	 $keys = ["new_client['name']", "new_client['email']", "new_client['phone']"];
+	 $keys = ['name', 'firstname', 'email', 'password', 'password_conf', 'phone', 'number_street', 'street', 'zip', 'city'];
 	    foreach ( $keys as $key ) {
-	        if ( empty($_POST[$key]) || !trim($_POST[$key]) ) {  // trim() supprime les espaces avt et après ds une chaîne
+	        if ( empty($_POST['new_client'][$key]) || !trim($_POST['new_client'][$key]) ) {  // trim() supprime les espaces avt et après ds une chaîne
 	                                                             // ici, gère le fait que l'utilisateur est mis des espaces uniquement
 	            // si le champ est vide, on crée l'index correspondant à
-	            // ce champ dans le tableau $error, de manière à le réutiliser plus bas.
+	            // ce champ dans le tableau $tab_error, de manière à le réutiliser plus bas.
 	            $tab_error[$key] = "le champ $key est manquant !\n";
+	            // print_r($tab_error);
 	        }
 	   } 
 
@@ -86,15 +87,15 @@ if ( $_POST ) {
 		<form id="form-new-client" action="connexion.php" method="POST">
 
 			<?php if ( $error ) { ?>
-				<h3 style="color: red;"><?=$error?></h3>
+				<h3 style="color: #000;"><?=$error?></h3>
 			<?php } ?>
 
 			
 
 			<div class="line-form">
-				<label for="new_client[name]" class="<?=!empty($tab_error["new_client['name']"]) ? 'error' : '' ?>">Votre nom :</label>
-
+				<label for="new_client[name]" class="<?=!empty($tab_error['name']) ? 'error' : '' ?>">Votre nom :</label>
 				<!-- <label for="new_client[name]">Votre nom :</label> -->
+
 				<input
 					id="name"
 					type="text"
@@ -105,7 +106,7 @@ if ( $_POST ) {
 			</div>
 
 			<div class="line-form">	
-				<label for="new_client[firstname]">Votre prénom :</label>
+				<label for="new_client[firstname]" class="<?=!empty($tab_error['firstname']) ? 'error' : '' ?>">Votre prénom :</label>
 				<input
 					id="firstname"
 					type="text"
@@ -116,7 +117,7 @@ if ( $_POST ) {
 			</div>
 
 			<div class="line-form">
-				<label for="new_client[email]">Votre email :</label>
+				<label for="new_client[email]" class="<?=!empty($tab_error['email']) ? 'error' : '' ?>">Votre email :</label>
 				<input
 					id="email"
 					type="text"
@@ -127,17 +128,17 @@ if ( $_POST ) {
 			</div>
 
 			<div class="line-form">
-				<label for="new_client[password]">Votre mot de passe :</label>
+				<label for="new_client[password]" class="<?=!empty($tab_error['password']) ? 'error' : '' ?>">Votre mot de passe :</label>
 				<input id="password" type="password" placeholder="password" name="new_client[password]" />
 			</div>	
 
 			<div class="line-form">
-				<label for="new_client[password_conf]">Confirmation du mot de passe :</label>
+				<label for="new_client[password_conf]" class="<?=!empty($tab_error['password_conf']) ? 'error' : '' ?>">Confirmation du mot de passe :</label>
 				<input id="password_conf" type="password" placeholder="confirmation password" name="new_client[password_conf]" />
 			</div>
 
 			<div class="line-form">
-				<label for="new_client[phone]">Votre téléphone :</label>
+				<label for="new_client[phone]" class="<?=!empty($tab_error['phone']) ? 'error' : '' ?>">Votre téléphone :</label>
 				<input
 					id="phone"
 					type="tel"
@@ -148,7 +149,7 @@ if ( $_POST ) {
 			</div>
 
 			<div class="line-form">
-				<label>Votre adresse :</label>
+				<label for="new-client[number_street]" class="<?=!empty($tab_error['number_street']) ? 'error' : '' ?>">Votre adresse :</label>
 				<input
 					id="number_street"
 					type="int"
