@@ -1,0 +1,73 @@
+label {
+	display: none;
+}
+
+.line-form::before {
+	content: "*";
+	color: #FFF;
+	padding-left: 2px;
+}
+
+.style-form  {	/* comme .products (du fichier style.css) */
+	color: #fff;
+	padding: 20px;
+}
+
+
+/* Pour les gestions d'erreur dans le formulaire d'inscription */
+
+.error-message {
+	color: #C92020;
+	font-weight: bold;
+	margin-left: 124px; /* 4px de plus pour l'espace des inline-blocks. Crad. */
+}
+
+.line-form.has-error label, .line-form.has-error label::after {
+	color: #C92020;
+}
+
+.line-form.has-error input {
+	background-color: #FFEDED;
+	border: 1px solid #C92020;
+}
+
+@media screen and (min-width: 960px){
+	/* Changement de header/menu */
+
+#wrapper_connexion {
+	margin : auto;
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+}
+
+.wrapper {
+	width: 50%;
+	display: inline-block;
+}
+
+.error {
+	color : red;
+}
+
+label, .fake-label {
+	width: 130px;
+	display: inline-block;
+}
+
+label::after {
+	content: "*";
+	color: #FFF;
+	padding-left: 2px;
+}
+
+.line-form::before {
+	display: none;
+}
+
+.wrapper {
+	width: 400px;
+	margin: auto;
+	padding: 0px 10px 10px 10px;
+	border: 1px dotted #CCC;
+}

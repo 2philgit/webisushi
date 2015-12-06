@@ -1,0 +1,35 @@
+CLIENTS
+	nom
+	prénom
+	email
+	password
+	tel
+	adresse 
+
+COMMANDES
+	id
+	produit_id
+	client_id
+	shop_id
+	statut
+	total
+
+PRODUITS
+	nom_produit 
+	description
+	prix
+
+MENUS
+	id
+	produit_id
+
+SHOPS
+	nom_magasin
+	adresse
+	tel
+
+OFFRES ( permet de gérer les offres 3 menu achetés => 1 offert)
+	client_id
+	menu_id 
+
+
