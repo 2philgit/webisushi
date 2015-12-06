@@ -1,0 +1,63 @@
+label .error {
+	color : red;
+	font-size: 30px;
+}
+
+/*
+label, .fake-label {
+	width: 180px;
+	display: inline-block;
+}
+*/
+
+@media screen and (min-width: 960px){
+	/* Changement de header/menu */
+
+	.container{
+		background-color:#E7490F;
+	}
+	header h1 {
+		float: left;
+		padding-left: 20px;
+	}
+
+	.isushi-nav {		
+		display: block;
+		position: static;		
+	}
+
+	#large-menu {
+		display: block;
+		float: left;
+    	padding-left: 15%;
+	}
+	#nav-bottom{
+		display: none;
+	}
+	#fix-menu {
+		width: 30%;
+		float: right;	
+	}
+
+	.isushi-nav a {
+		border-bottom: none;
+		margin: 0 10px;
+		font-size: 1.2em;
+		font-weight: 600;
+	}
+
+	.isushi-nav li {
+		float: left;
+	}	
+	#tease {
+		width: 80%;
+		margin: auto;	
+	}
+	#tease p{
+    	font-size: 1.5em;
+	}
+	#menu-choice{
+		display: block;
+	}
+
+}

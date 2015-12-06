@@ -5,43 +5,63 @@ body {
 
 
 h1 {
-	font-size: 48px;
+	font-size: 3em;
 }
-
+a {
+	text-decoration: none;
+	color: #444;
+}
+.clearfix::after{
+	clear: both;
+	display: block;
+	content: "";
+}
 
 .container {
 	width: 100%;
 	margin: auto;
 	max-width: 1220px;
-	background-color: green;
+	background-color: #5B7A2B;
 }
 
 .page-header {
 	height: 80px;
 	background-color: #FFF;
-	text-align: center;
 }
 
-.page-header h1 {
-	display: inline-block;
+header h1 {
+	float: left;
+	padding-left: 10px;
 }
-
-.isushi-nav {
+#large-menu{
 	display: none;
-	position: absolute;
-	z-index: 1;
-	text-align: left;
-	background-color: #FFF;
-	left: 0;
-	width: 100%;
-	padding-bottom: 10px;
 }
-.isushi-nav a {
+.isushi-nav ul {
+	float: right;	
+}
+.isushi-nav li {
+	float: left;	
+}
+
+#fix-menu a {
 	color: #444;
 	display: block;
-	padding: 10px 0;
-	margin: 0 25px;
-	border-bottom: 1px solid #CCC;
+	margin-right: 10px;
+}
+#fix-menu sup{
+    background-color: #E7490F;
+    border-radius: 50%;
+    bottom: 23px;
+    color: #fff;
+    font-size: 0.3em;
+    left: -5px;
+    padding: 3px 6px;
+    position: relative;
+}
+
+.isushi-nav a {
+	display: block;
+	padding: 25px 0;	
 }
 
 .isushi-nav a i {
@@ -49,21 +69,52 @@ h1 {
 	margin-right: 25px;
 }
 
-.isushi-nav ul li:last-child a {
-	border-bottom: none;
+
+#nav-bottom {
+	text-align: left;
+	background-color: #E95A0D;
+	padding: 5px 20px;
+	text-transform: uppercase;
+}
+#nav-bottom li {
+	padding: 20px 20px 20px 0;
+	border-bottom: 1px solid #CCC;
+}
+.fa-chevron-right{
+	float: right;
 }
 
-#tease {
+.products {
 	color: #fff;
 	padding: 20px;
 }
 
-#tease h2{
-	font-size: 28px;
+h2{
+	font-size: 2em;
+}
+#userhello {
+	float: right;
+	font-size: 0.6em;
+}
+
+#tease {
+    width: 100%;
+}
+
+#tease p{
+	float: left;
+	width: 60%;
+    margin: 5%;
+    font-size: 1.5em;	
 }
 #tease img {
-	margin:20px auto;
-	width: 209px;
+	float: left;
+	margin:2% auto;
+	width: 22%;
+}
+
+#menu-choice{
+	display: none;
 }
 /* page footer */
 .page-footer {
@@ -77,28 +128,49 @@ h1 {
 	/* Changement de header/menu */
 
 	.container{
-		background-color:#111223;
+		background-color:#E7490F;
 	}
 	header h1 {
 		float: left;
 		padding-left: 20px;
 	}
 
-	.isushi-nav {
-		float: right;
+	.isushi-nav {		
 		display: block;
-		position: static;
-		width: 560px;
+		position: static;		
 	}
 
+	#large-menu {
+		display: block;
+		float: left;
+    	padding-left: 15%;
+	}
+	#nav-bottom{
+		display: none;
+	}
+	#fix-menu {
+		width: 30%;
+		float: right;	
+	}
 
 	.isushi-nav a {
 		border-bottom: none;
 		margin: 0 10px;
+		font-size: 1.2em;
+		font-weight: 600;
 	}
 
 	.isushi-nav li {
 		float: left;
+	}	
+	#tease {
+		width: 80%;
+		margin: auto;	
 	}
-
+	#tease p{
+    	font-size: 1.5em;
+	}
+	#menu-choice{
+		display: block;
+	}
 }

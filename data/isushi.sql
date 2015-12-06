@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.0.2
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 02 Décembre 2015 à 16:08
--- Version du serveur :  10.0.17-MariaDB
--- Version de PHP :  5.6.14
+-- Généré le :  Jeu 03 Décembre 2015 à 14:30
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -56,8 +56,9 @@ CREATE TABLE `commandes` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_client` int(10) UNSIGNED NOT NULL,
   `id_produit` int(10) UNSIGNED NOT NULL,
+  `quantity` int(10) UNSIGNED NOT NULL,
+  `total` int(10) UNSIGNED NOT NULL,
   `id_magasin` int(10) UNSIGNED NOT NULL,
-  `Total` int(7) UNSIGNED NOT NULL,
   `created` datetime NOT NULL,
   `statut` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -137,6 +138,7 @@ CREATE TABLE `produits` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` int(7) UNSIGNED NOT NULL,
   `is_menu` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -145,27 +147,27 @@ CREATE TABLE `produits` (
 -- Contenu de la table `produits`
 --
 
-INSERT INTO `produits` (`id`, `name`, `description`, `price`, `is_menu`) VALUES
-(5, 'maki avocat', 'sushi à base d''avocat', 4, 1),
-(6, 'maki California', 'sushi façon Californie', 4, 1),
-(7, 'miso soup', 'soupe japonaise', 3, 1),
-(8, 'nigiri crevette', 'Nigiri de crevettes', 4, 1),
-(9, 'nigiri saumon', 'Nigiri au saumon', 6, 1),
-(10, 'nigiri thon', 'Nigiri au thon', 4, 1),
-(11, 'rice', 'riz vapeur', 3, 1),
-(12, 'nigri omelette', 'Omelette japonaise', 4, 0),
-(13, 'crevette California', 'Des crevettes de Californie', 5, 0),
-(14, 'maki concombre', 'Du cocombre et encore du concombre', 4, 1),
-(15, 'maki thon avocat', 'Délicieux mélange de thon et d''avocat', 5, 0),
-(16, 'salade', 'salade japonaise', 6, 1),
-(17, 'sashimi macqueraux', 'Plat à base de macqueraux', 4, 0),
-(18, 'sashimi thon otoro', 'sashimi', 5, 0),
-(19, 'spicy crabe roll', 'Rouleau de crabe', 5, 0),
-(20, 'tempura crevette', 'Tempura aux crevettes', 5, 0),
-(21, 'sashimi saumon', 'Sashimi de saumon', 5, 1),
-(22, 'menu Maki', 'Soupe, salade, maki Californuia, avocat et concombre', 12, 0),
-(23, 'menu Sashimi', 'Soupe, salade, sashimi saumon, riz', 14, 0),
-(24, 'menu Nigiri', 'Soupe, salade, nigiri saumon, thon, crevette', 15, 0);
+INSERT INTO `produits` (`id`, `name`, `description`, `image`, `price`, `is_menu`) VALUES
+(5, 'maki avocat', 'maki à l''avocat (x6)', 'imgisushi/maki-avocat.jpg', 4, 1),
+(6, 'maki California', 'maki california (x6)', 'imgisushi/maki-california.jpg', 4, 1),
+(7, 'miso soup', 'soupe japonaise', 'imgisushi/miso-soup.jpeg', 3, 1),
+(8, 'nigiri crevette', 'Nigiri crevette (x2)', 'imgisushi/nigiri-crevette.jpg', 4, 1),
+(9, 'nigiri saumon', 'Nigiri saumon (x2)', 'imgisushi/nigiri-saumon.jpg', 4, 1),
+(10, 'nigiri thon otoro', 'Nigiri thon otoro (x2)', 'imgisushi/nigiri-thon.jpg', 8, 1),
+(11, 'rice', 'bol de riz vapeur', 'imgisushi/rice.jpg', 3, 1),
+(12, 'nigri omelette', 'nigiri omelette (x2)', 'imgisushi/nigiri-omelette.jpg', 4, 0),
+(13, 'maki california crevette', 'california roll à la crevette (x6)', 'imgisushi/crevette-california.jpg', 5, 0),
+(14, 'maki concombre', 'maki concombre (x6)', 'imgisushi/maki-concombre.jpg', 4, 1),
+(15, 'maki thon avocat', 'maki thon-avocat (x6)', 'imgisushi/maki-thon-avocat.jpg', 5, 0),
+(16, 'salade', 'salade japonaise', 'imgisushi/salade.jpg', 6, 1),
+(17, 'sashimi macqueraux', 'sashimi de macqueraux', 'imgisushi/sashimi-macqueraux.jpg', 4, 0),
+(18, 'sashimi thon otoro', 'sashimi du fameux et reputé thon otoro!', 'imgisushi/sashimi-thon-otoro.jpg', 10, 0),
+(19, 'spicy crabe roll', 'california roll au crabe (x6)', 'imgisushi/spicy-crabe-roll.jpg', 5, 0),
+(20, 'tempura crevette', 'Tempura aux crevettes', 'imgisushi/tempura-crevette.jpg', 5, 0),
+(21, 'sashimi saumon', 'Sashimi de saumon', 'imgisushi/sashimi-saumon.jpg', 5, 1),
+(22, 'menu Maki', 'Soupe, salade, maki California (x6), avocat (x6)et concombre (x6)', 'imgisushi/menu-maki.jpg', 12, 0),
+(23, 'menu Sashimi', 'Soupe, salade, sashimi saumon, riz', 'imgisushi/menu-sashimi.jpg', 14, 0),
+(24, 'menu Nigiri', 'Soupe, salade, nigiri saumon (x2), thon (x2), crevette (x2)', 'imgisushi/menu-nigiri.jpg', 15, 0);
 
 --
 -- Index pour les tables exportées
