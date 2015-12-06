@@ -1,0 +1,104 @@
+body {
+	font-family: 'Muli', sans-serif;
+	font-size: 92%;		
+}
+
+
+h1 {
+	font-size: 48px;
+}
+
+
+.container {
+	width: 100%;
+	margin: auto;
+	max-width: 1220px;
+	background-color: green;
+}
+
+.page-header {
+	height: 80px;
+	background-color: #FFF;
+	text-align: center;
+}
+
+.page-header h1 {
+	display: inline-block;
+}
+
+.isushi-nav {
+	display: none;
+	position: absolute;
+	z-index: 1;
+	text-align: left;
+	background-color: #FFF;
+	left: 0;
+	width: 100%;
+	padding-bottom: 10px;
+}
+.isushi-nav a {
+	color: #444;
+	display: block;
+	padding: 10px 0;
+	margin: 0 25px;
+	border-bottom: 1px solid #CCC;
+}
+
+.isushi-nav a i {
+	float: right;
+	margin-right: 25px;
+}
+
+.isushi-nav ul li:last-child a {
+	border-bottom: none;
+}
+
+#tease {
+	color: #fff;
+	padding: 20px;
+}
+
+#tease h2{
+	font-size: 28px;
+}
+#tease img {
+	margin:20px auto;
+	width: 209px;
+}
+/* page footer */
+.page-footer {
+	background-color: #282828;
+	padding: 32px 25px;
+	text-align: center;
+	color: #fff;
+}
+
+@media screen and (min-width: 960px){
+	/* Changement de header/menu */
+
+	.container{
+		background-color:#111223;
+	}
+	header h1 {
+		float: left;
+		padding-left: 20px;
+	}
+
+	.isushi-nav {
+		float: right;
+		display: block;
+		position: static;
+		width: 560px;
+	}
+
+
+	.isushi-nav a {
+		border-bottom: none;
+		margin: 0 10px;
+	}
+
+	.isushi-nav li {
+		float: left;
+	}
+
+}
